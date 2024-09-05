@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Global de E-books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #aacfcf;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        section {
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+        }
+        button {
+            background-color: #87a6a6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #76a2a2;
+        }
+        footer {
+            background-color: #aacfcf;
+            padding: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Biblioteca Global de E-books</h1>
+        <p>Encontre, peça ou publique e-books sobre qualquer tema!</p>
+        <nav>
+            <select id="language-selector" onchange="changeLanguage()">
+                <option value="pt-br">Português (Brasil)</option>
+                <option value="pt-pt">Português (Portugal)</option>
+                <option value="en">English</option>
+                <option value="ru">Русский</option>
+            </select>
+        </nav>
+    </header>
+
+    <section>
+        <div class="container">
+            <h2 id="request-title">Solicitar um e-book</h2>
+            <form id="ebook-form">
+                <label id="topic-label" for="topic">Tema do e-book:</label>
+                <input type="text" id="topic" name="topic" placeholder="Digite o tema desejado">
+
+                <label id="price-label" for="price">Preço (centavos):</label>
+                <input type="number" id="price" name="price" value="50" readonly>
+
+                <button type="submit" id="submit-btn">Solicitar E-book</button>
+            </form>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 id="publish-title">Publicar um e-book</h2>
+            <form id="publish-form">
+                <label id="publish-label" for="ebook-name">Nome do e-book:</label>
+                <input type="text" id="ebook-name" name="ebook-name" placeholder="Nome do seu e-book">
+
+                <label id="author-label" for="author">Nome do autor:</label>
+                <input type="text" id="author" name="author" placeholder="Seu nome">
+
+                <label id="publish-price-label" for="publish-price">Taxa de publicação: R$ 5,00</label>
+                <input type="number" id="publish-price" name="publish-price" value="500" readonly>
+
+                <button type="submit" id="publish-btn">Publicar E-book</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Biblioteca Global de E-books | Ganhe R$ 0,50 por venda de seu e-book publicado</p>
+    </footer>
+
+    <script>
+        const translations = {
+            "pt-br": {
+                requestTitle: "Solicitar um e-book",
+                topicLabel: "Tema do e-book:",
+                priceLabel: "Preço (centavos):",
+                submitBtn: "Solicitar E-book",
+                publishTitle: "Publicar um e-book",
+                publishLabel: "Nome do e-book:",
+                authorLabel: "Nome do autor:",
+                publishPriceLabel: "Taxa de publicação: R$ 5,00",
+                publishBtn: "Publicar E-book"
+            },
+            "pt-pt": {
+                requestTitle: "Solicitar um e-book",
+                topicLabel: "Tema do e-book:",
+                priceLabel: "Preço (cêntimos):",
+                submitBtn: "Solicitar E-book",
+                publishTitle: "Publicar um e-book",
+                publishLabel: "Nome do e-book:",
+                authorLabel: "Nome do autor:",
+                publishPriceLabel: "Taxa de publicação: 5 Euros",
+                publishBtn: "Publicar E-book"
+            },
+            "en": {
+                requestTitle: "Request an e-book",
+                topicLabel: "E-book topic:",
+                priceLabel: "Price (cents):",
+                submitBtn: "Request E-book",
+                publishTitle: "Publish an e-book",
+                publishLabel: "E-book name:",
+                authorLabel: "Author name:",
+                publishPriceLabel: "Publication fee: $5.00",
+                publishBtn: "Publish E-book"
+            },
+            "ru": {
+                requestTitle: "Запросить электронную книгу",
+                topicLabel: "Тема электронной книги:",
+                priceLabel: "Цена (копейки):",
+                submitBtn: "Запросить электронную книгу",
+                publishTitle: "Опубликовать электронную книгу",
+                publishLabel: "Название электронной книги:",
+                authorLabel: "Имя автора:",
+                publishPriceLabel: "Плата за публикацию: 5 рублей",
+                publishBtn: "Опубликовать электронную книгу"
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById("language-selector").value;
+            const texts = translations[lang];
+
+            document.getElementById("request-title").innerText = texts.requestTitle;
+            document.getElementById("topic-label").innerText = texts.topicLabel;
+            document.getElementById("price-label").innerText = texts.priceLabel;
+            document.getElementById("submit-btn").innerText = texts.submitBtn;
+            document.getElementById("publish-title").innerText = texts.publishTitle;
+            document.getElementById("publish-label").innerText = texts.publishLabel;
+            document.getElementById("author-label").innerText = texts.authorLabel;
+            document.getElementById("publish-price-label").innerText = texts.publishPriceLabel;
+            document.getElementById("publish-btn").innerText = texts.publishBtn;
+        }
+    </script>
+</body>
+</html>
